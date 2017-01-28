@@ -1,0 +1,283 @@
+body{
+    min-height: 100%;
+    overflow: hidden;
+    cursor: -webkit-grab; 
+    cursor: -moz-grab;
+}
+
+body:active{
+    cursor: -webkit-grabbing; 
+    cursor: -moz-grabbing;
+}
+
+#time{
+    height: 6px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    cursor: pointer;
+}
+
+#future {
+    display: block;
+    margin-top: -3px;
+    background-color: #D7C7AB;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    z-index: 4;
+    cursor: cell;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+}
+
+#current-time{
+    margin-top: -3px;
+    height: 6px;
+    width: 50%;
+    background-color: #0B0B0A;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+}
+
+.milestone {
+    width: 50px;
+    height: 26px;
+    border-radius: 3px;
+    background-color: #F1A33B;
+    margin-left: -25px;
+    position: absolute;
+    z-index: 6;
+    transition: background-color 0.43s,
+                width 0.4s,
+                height 0.4s, 
+                margin-left 0.4s, 
+                top 0.4s, 
+                bottom 0.4s;   
+}
+
+.milestone.top{
+    top: -48px;
+}
+
+.milestone.bottom{
+    top: 20px;
+}
+
+.milestone textarea {
+    width: 240px;
+    height: 240px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -120px;
+    margin-top: -120px;
+    background-color: #F1A33B;
+    color: white;
+    font-size: 32px;
+    font-family: Arial;
+    border: none;
+    visibility: hidden;
+    text-align: center;
+    outline: none;
+    resize: none;
+    transition: opacity 0s linear 0s, visibility 0s linear;
+}
+
+.milestone:hover textarea{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s linear 0.4s, visibility 0s linear 0.4s;
+}
+
+.milestone.top:after,
+.milestone.bottom:after{
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+}
+
+.milestone.top:after {
+    bottom: -5px;
+    border-top: 10px solid #F1A33B;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.milestone.bottom:after {
+    top: -5px;
+    border-bottom: 10px solid #F1A33B;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.milestone:hover{
+    background-color: #F1A33B;
+    width: 400px;
+    height: 400px;
+    margin-left: -200px;
+    top: -248px;
+    z-index: 7;
+}
+
+.milestone-inner {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    padding: 100px;
+    font-family: Arial;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0s linear 0s;
+}
+
+.milestone:hover .milestone-inner {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s linear 0.4s;
+}
+
+#current-time-pop,
+#future-time-pop{
+    width: 100px;
+    height: 30px;
+    font-size: 22px;
+    font-family: Arial;
+    background-color: black;
+    margin-left: -50px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: -80px;
+    left: 100%;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+#future-time-pop{
+    left: 50%;
+}
+
+#current-time #current-time-pop:hover{
+    opacity: 1;
+}
+
+#time:hover #future-time-pop{
+    opacity: 1;
+}
+
+#scale-container{
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#scale-container div {
+    width: 30px;
+    height: 30px;
+    float: left;
+    border: 1px solid #ccc;
+    font-size: 32px;
+    color: gray;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#scale-container #sub-day{
+    margin-right: 10px;
+    line-height: 23px;
+}
+
+.marker.day {
+    height: 16px;
+    width: 4px;
+    position: absolute;
+    background-color: #0B0B0A;
+    margin-left: -2px;
+    top: -8px;
+    text-align: center;
+    z-index: 5;
+    transition: width 0.2s linear;
+}
+
+.marker.day:hover{
+    width: 80px;
+    z-index: 10;
+}
+
+.marker.day span{
+    visibility: hidden;
+    color: white;
+    opacity: 0;
+    display: none;
+    font-family: Arial;
+    font-size: 14px;
+    transition: opacity 0s linear, visibility 0s linear 0s;
+}
+
+.marker.day:hover span{
+    display: block;
+    visibility: visible;
+    transition: opacity 0.2s linear 0.2s, visibility 0s linear 0.2s;
+    opacity: 1;
+}
+
+#add-marker-btn {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-color: blue;
+    position: absolute;
+    top: -8px;
+    margin-left: -8px;
+    transition: opacity 0.1s linear;
+    opacity: 0;
+}
+
+#add-marker-btn.active {
+    opacity: 1;
+}
+
+#middle {
+    width: 1px;
+    height: 100%;
+    background-color: #0B0B0A;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 15;
+}
+
+.marker.timespan {
+    height: 6px;
+    position: absolute;
+    top: 0;
+    margin-top: -3px;
+    background-color: green;
+    z-index: 7;
+    opacity: 0.5;
+}

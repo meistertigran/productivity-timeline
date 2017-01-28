@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Get Things Done!</title>
+        <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="style/reset.css" />
+        <script src="js/jquery.min.js" ></script>
+        <script src="js/moment.js" ></script>
+        <script src="js/time.js" ></script>
+        <script src="js/script.js" ></script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="time">
+                <span id="future">
+                    <div id="future-time-pop"><span class="hours"></span>:<span class="min"></span></div>
+                </span>
+                <div class="marker timespan" data-thedate="05-02-2016 24:00" data-duration="3600000">
+                </div>
+                <div id="current-time">
+                    <div id="current-time-pop"><span class="hours"></span>:<span class="min"></span>:<span class="sec"></span></div>
+                </div>
+                <span id="add-marker-btn"></span>
+            </div>
+            <div id="scale-container">
+                <div id="sub-day">-</div>
+                <div id="add-day">+</div>
+            </div>
+            <div id="middle"></div>
+        </div>
+    </body>
+</html>
